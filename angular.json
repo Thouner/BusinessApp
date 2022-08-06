@@ -102,6 +102,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "BusinessApp:build:production",
+            "firebaseProject": "ts-businessabb",
+            "firebaseHostingSite": "ts-businessabb"
+          }
         }
       }
     }

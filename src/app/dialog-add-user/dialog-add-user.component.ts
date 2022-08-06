@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { doc, Firestore } from '@angular/fire/firestore';
+import { collection, setDoc } from '@firebase/firestore';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -7,16 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogAddUserComponent implements OnInit {
 
-  constructor( ) { }
+  user: User = new User;
+  birthDate: Date;
+  coll:any;
+
+  constructor(firestore: Firestore) {
+    this.coll = collection(this.firestore, 'users');
+   }
 
   ngOnInit(): void {
+
   }
 
 
   onNoClick(): void {
     // this.dialogRef.close();
-    console.log('zu');
+    // console.log('zu');
   }
 
+
+  saveUser() {
+    this.user.birthDate = this.birthDate.getTime();
+    console.log('user =', this.user);
+
+    setDoc(doc(this.coll), {this.user});
+
+  }
 
 }

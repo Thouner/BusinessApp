@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from 'src/models/user.class';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 
 @Component({
@@ -9,7 +10,14 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 })
 export class UserComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+user: User = new User;
+birthDate:Date;
+
+
+  constructor(public dialog: MatDialog) {
+    // this.birthDate
+    // this.user.firstName
+  }
 
   ngOnInit(): void {
   }
@@ -17,7 +25,7 @@ export class UserComponent implements OnInit {
 
   openDialog(): void {
     this.dialog.open(DialogAddUserComponent, {
-
+      width: '450px',
     });
 
     // dialogRef.afterClosed().subscribe(result => {

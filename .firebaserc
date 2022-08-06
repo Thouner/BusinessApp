@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ts-businessabb": {
+      "hosting": {
+        "BusinessApp": [
+          "ts-businessabb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ts-businessabb"
+  }
+}
