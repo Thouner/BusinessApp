@@ -1,4 +1,42 @@
-<p>user works!</p>
+<mat-card>
+
+    <!-- <table mat-table [dataSource]="data" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table> -->
+
+    <table class="table-container">
+        <tr>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>dfgd</td>
+            <td>dfgff</td>
+            <td>ghjfgjkuj</td>
+        </tr>
+        <tr>
+            <td>dfgd</td>
+            <td>dfgff</td>
+            <td>ghjfgjkuj</td>
+        </tr>
+        <tr>
+            <td>dfgd</td>
+            <td>dfgff</td>
+            <td>ghjfgjkuj</td>
+        </tr>
+    </table>
+
+</mat-card>
+
+
+
 
 <button (click)="openDialog()" class="add-button" color="primary " matTooltip="Add a new user " [matTooltipPosition]=" 'left' " matTooltipHideDelay="100 ">
   <mat-icon>add</mat-icon>

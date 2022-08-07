@@ -10,13 +10,14 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 })
 export class UserComponent implements OnInit {
 
-user: User = new User;
-birthDate:Date;
+  user: User = new User;
+  // displayedColumns: string[] = ['Name', 'Last name', 'Birth date', 'Email', 'Street', 'Street', 'City', 'PostalCode',];
+  // columnsToDisplay: string[] = this.displayedColumns.slice();
+  // data: any[] = [this.user.toJson()];
 
 
   constructor(public dialog: MatDialog) {
-    // this.birthDate
-    // this.user.firstName
+
   }
 
   ngOnInit(): void {
@@ -27,11 +28,6 @@ birthDate:Date;
     this.dialog.open(DialogAddUserComponent, {
       width: '450px',
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed', result);
-
-    // });
   }
 
 
