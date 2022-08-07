@@ -2,11 +2,11 @@ export class User {
 
   firstName: string;
   lastName: string;
-  birthDate: number;
+  birthDate: any;
   email: string;
   street: string;
   city: string;
-  postalCode: number;
+  postalCode: any;
 
 
   constructor(obj?: any) {

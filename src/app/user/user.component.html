@@ -13,24 +13,15 @@
     <table class="table-container">
         <tr>
             <th>Name</th>
-            <th>Last name</th>
             <th>Email</th>
+            <th>City</th>
         </tr>
-        <tr>
-            <td>dfgd</td>
-            <td>dfgff</td>
-            <td>ghjfgjkuj</td>
+        <tr *ngFor="let user of allUsers, let i = index" [routerLink]="['/user/' + user.id]">
+            <td>{{ user.user.firstName }} <span *ngIf="user.user.lastName != 'empty'">{{ user.user.lastName }}</span></td>
+            <td>{{ user.user.email }}</td>
+            <td>{{ user.user.city }}</td>
         </tr>
-        <tr>
-            <td>dfgd</td>
-            <td>dfgff</td>
-            <td>ghjfgjkuj</td>
-        </tr>
-        <tr>
-            <td>dfgd</td>
-            <td>dfgff</td>
-            <td>ghjfgjkuj</td>
-        </tr>
+
     </table>
 
 </mat-card>

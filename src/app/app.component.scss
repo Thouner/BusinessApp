@@ -1,3 +1,7 @@
+.overHidden {
+    overflow-x: hidden;
+}
+
 .example-sidenav-content {
     padding: 0;
 }
@@ -29,6 +33,9 @@
 
 .example-sidenav {
     width: 300px;
+    @media screen and (max-width: 900px) {
+        width: 150px;
+    }
 }
 
 .logo-container {
@@ -38,8 +45,12 @@
     height: 64px;
     box-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.2);
     box-sizing: border-box;
+    @media screen and (max-width: 599px) {
+        height: 56px;
+    }
     img {
         height: 32px;
+        filter: invert(25%) sepia(97%) saturate(1199%) hue-rotate(214deg) brightness(91%) contrast(87%);
     }
 }
 
@@ -65,4 +76,7 @@
 
 .router-container {
     padding: 16px 64px;
+    @media screen and (max-width: 900px) {
+        padding: 16px 16px;
+    }
 }

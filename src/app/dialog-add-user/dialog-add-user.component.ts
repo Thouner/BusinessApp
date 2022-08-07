@@ -12,13 +12,12 @@ import { User } from 'src/models/user.class';
 export class DialogAddUserComponent implements OnInit {
 
   user: User = new User;
-  birthDate: Date;
+  // birthDate: Date;
   coll: any;
-  progressBar:boolean = false;
+  progressBar: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<DialogAddUserComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private firestore: Firestore) {
     this.coll = collection(this.firestore, 'users');
   }
@@ -35,13 +34,33 @@ export class DialogAddUserComponent implements OnInit {
 
   async saveUser() {
     this.progressBar = true;
-    if(this.birthDate){
-      this.user.birthDate = this.birthDate.getTime();
-    } else {
-      let today = new Date;
-      this.user.birthDate = today.getTime();
+    // if(this.birthDate){
+    //   this.user.birthDate = this.birthDate.getTime();
+    // } else {
+    //   let today = new Date;
+    //   this.user.birthDate = today.getTime();
+    // }
+    if (!this.user.firstName) {
+      this.user.firstName = 'empty';
     }
-    // console.log('user =', this.user);
+    if (!this.user.lastName) {
+      this.user.lastName = 'empty';
+    }
+    if (!this.user.birthDate) {
+      this.user.birthDate = 'empty';
+    }
+    if (!this.user.email) {
+      this.user.email = 'empty';
+    }
+    if (!this.user.street) {
+      this.user.street = 'empty';
+    }
+    if (!this.user.city) {
+      this.user.city = 'empty';
+    }
+    if (!this.user.postalCode) {
+      this.user.postalCode = 'empty';
+    }
     await addDoc(this.coll, { user: this.user.toJson() })
     // await setDoc(doc(this.coll), {user: this.user});
     this.progressBar = false;

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { collectionData, Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { collection } from '@firebase/firestore';
+import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 
@@ -11,13 +15,23 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 export class UserComponent implements OnInit {
 
   user: User = new User;
-  // displayedColumns: string[] = ['Name', 'Last name', 'Birth date', 'Email', 'Street', 'Street', 'City', 'PostalCode',];
-  // columnsToDisplay: string[] = this.displayedColumns.slice();
-  // data: any[] = [this.user.toJson()];
+  coll: any;
+  allUsers: any[] = [];
+  user$: Observable<any>;
+  userId: string;
 
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private firestore: Firestore) {
+    this.coll = collection(this.firestore, 'users');
+    this.user$ = collectionData(this.coll, {idField: 'id'});
+    this.user$.subscribe((newUser) => {
+      this.allUsers = newUser;
+      console.log(this.allUsers[0].id);
 
+    });
   }
 
   ngOnInit(): void {

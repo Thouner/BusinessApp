@@ -1,0 +1,36 @@
+.profil-header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 300px;
+    color: white;
+    padding: 0;
+    .redcolor-container {
+        position: relative;
+        background-color: rgba(201, 31, 31, 0.9);
+        height: 65%;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        .santa-img-container {
+            position: absolute;
+            bottom: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 180px;
+            width: 180px;
+            background-color: white;
+            border-radius: 50%;
+            img {
+                height: 150px;
+                width: 150px;
+            }
+        }
+    }
+}
