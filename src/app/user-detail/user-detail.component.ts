@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { docData, Firestore } from '@angular/fire/firestore';
+import { doc, Firestore, getDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { collection, doc } from '@firebase/firestore';
+import { collection } from '@firebase/firestore';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,7 +12,8 @@ export class UserDetailComponent implements OnInit {
 
   userId: string = '';
   coll: any;
-  selectedUser:any ='';
+  selectedUser: any = '';
+  userGet;
 
 
   constructor(private route: ActivatedRoute, private firestore: Firestore) {
@@ -23,18 +24,25 @@ export class UserDetailComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
     });
-this.getUser()
+    // this.getUser()
+    this.selectedUser = this.getUser(this.userId);
+    console.log(this.selectedUser);
+
   }
 
-getUser(){
-  // this.selectedUser = doc(this.firestore, `user/${this.userId}`);
-  // let userRefernce = doc(this.firestore, `user/${this.userId}`);
-  // this.selectedUser = docData(userRefernce, { idField: 'id' });
-  this.selectedUser = this.coll.collectionData(this.coll, this.userId);
+   async getUser(id) {
+    // this.selectedUser = doc(this.firestore, `user/${this.userId}`);
+    // let userRefernce = doc(this.firestore, `user/${this.userId}`);
+    // this.selectedUser = docData(userRefernce, { idField: 'id' });
+    // this.selectedUser = this.coll.collectionData(this.coll, this.userId);
 
+    // this.selectedUser = getDocFromCache(this.coll);
 
-  console.log(this.selectedUser);
-}
+    const docRef = doc(this.firestore, `users/${id}`);
+    const querySnapshot = await getDoc(docRef);
+    return { id: querySnapshot.id, ...querySnapshot.data() };
+
+  }
 
 
 }

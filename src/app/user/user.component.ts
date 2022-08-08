@@ -18,7 +18,6 @@ export class UserComponent implements OnInit {
   coll: any;
   allUsers: any[] = [];
   user$: Observable<any>;
-  userId: string;
 
 
   constructor(
