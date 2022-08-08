@@ -48,6 +48,8 @@ export class DialogAddUserComponent implements OnInit {
     }
     if (!this.user.birthDate) {
       this.user.birthDate = 'empty';
+    } else {
+      this.user.birthDate = this.user.birthDate.getTime();
     }
     if (!this.user.email) {
       this.user.email = 'empty';

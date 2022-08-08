@@ -28,8 +28,6 @@ export class UserComponent implements OnInit {
     this.user$ = collectionData(this.coll, {idField: 'id'});
     this.user$.subscribe((newUser) => {
       this.allUsers = newUser;
-      console.log(this.allUsers);
-
     });
   }
 
