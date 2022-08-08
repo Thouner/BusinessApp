@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { doc, Firestore, getDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { collection } from '@firebase/firestore';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,12 +12,13 @@ import { collection } from '@firebase/firestore';
 export class UserDetailComponent implements OnInit {
 
   userId: string = '';
-  coll: any;
-  selectedUser: any = '';
+  selectedUser: any;
+  user: User = new User();
+
 
 
   constructor(private route: ActivatedRoute, private firestore: Firestore) {
-    this.coll = collection(firestore, 'users');
+
   }
 
   async ngOnInit() {
@@ -24,17 +26,24 @@ export class UserDetailComponent implements OnInit {
       this.userId = params['id'];
     });
     await this.getUser(this.userId)
-    console.log('dieser User', this.selectedUser);
+
   }
 
 
-  async getUser(id:string ) {
+  async getUser(id: string) {
     const docRef = doc(this.firestore, `users/${id}`);
     const querySnapshot = await getDoc(docRef);
     this.selectedUser = querySnapshot.data();
-    }
+    this.user = new User(this.selectedUser.user);
+  }
 
 
+  openEditDialog(){
+    // this.dialog.open(DialogAddUserComponent, {
+    //   width: '450px',
+    // });
+
+  }
 }
 
 

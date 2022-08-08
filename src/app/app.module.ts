@@ -25,9 +25,9 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -57,6 +57,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     FormsModule,
     MatProgressBarModule,
     MatCardModule,
+    MatMenuModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
