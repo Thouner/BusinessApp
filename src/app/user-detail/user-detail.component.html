@@ -13,6 +13,7 @@
         </button>
         <mat-menu #editMenu="matMenu" xPosition="before">
             <button (click)="openEditDialog()" mat-menu-item>Edit user</button>
+            <button color="warn" mat-button>Delete user</button>
         </mat-menu>
 
     </div>
@@ -25,13 +26,6 @@
         {{ user.street }} <br> {{ user.city }} {{ user.postalCode }}
     </mat-card-content>
 
-    <button mat-icon-button [matMenuTriggerFor]="adressMenu" class="menu-button">
-      <mat-icon>more_horiz</mat-icon>
-    </button>
-    <mat-menu #adressMenu="matMenu" xPosition="before">
-        <button mat-menu-item>Item 1</button>
-    </mat-menu>
-
 </mat-card>
 
 <mat-card class="magin-t-16 p-relativ">
@@ -40,8 +34,5 @@
         22/43/3455
     </mat-card-content>
 
-    <button mat-icon-button class="menu-button">
-      <mat-icon>more_horiz</mat-icon>
-    </button>
 
 </mat-card>

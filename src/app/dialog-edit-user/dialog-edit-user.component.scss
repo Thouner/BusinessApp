@@ -1,0 +1,36 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.adress-container {
+    tr {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+mat-form-field {
+    width: 100%;
+    @media screen and (max-width: 300px) {
+        width: 200px;
+    }
+}
+
+.dialog-content {
+    @media screen and (max-width: 300px) {
+        padding: 8px;
+    }
+}
+
+.dialog-container {
+    position: relative;
+    mat-progress-bar {
+        z-index: 99;
+        position: absolute;
+        bottom: 0;
+        left: -24px;
+        right: -24px;
+        width: calc(100% + 48px);
+    }
+}
