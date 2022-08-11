@@ -8,26 +8,27 @@
         <div class="input-container">
             <mat-form-field appearance="outline">
                 <mat-label>First name</mat-label>
-                <input [disabled]="progressBar" matInput placeholder="Your first name">
+                <input [disabled]="progressBar" matInput [(ngModel)]="user.firstName" placeholder="Your first name">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last name</mat-label>
-                <input [disabled]="progressBar" matInput placeholder="Your last name">
+                <input [disabled]="progressBar" matInput [(ngModel)]="user.lastName" placeholder="Your last name">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Birth date</mat-label>
-                <input [disabled]="progressBar" matInput [matDatepicker]="picker">
+                <input [disabled]="progressBar" matInput [(ngModel)]="user.birthDate" [matDatepicker]="picker" placeholder="Your birth date">
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <!-- <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker> -->
-                <mat-datepicker #picker startView="year"></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input [disabled]="progressBar" matInput placeholder="Your last name">
+                <input [disabled]="progressBar" matInput [(ngModel)]="user.email" placeholder="Your email">
             </mat-form-field>
 
             <table class="example-full-width adress-container" cellspacing="0">
@@ -35,19 +36,19 @@
                     <td>
                         <mat-form-field class="example-full-width" appearance="outline">
                             <mat-label>Street + House No.</mat-label>
-                            <input [disabled]="progressBar" matInput placeholder="Elbtorpromenade">
+                            <input [disabled]="progressBar" matInput [(ngModel)]="user.street" placeholder="Your street and house number">
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width" appearance="outline">
                             <mat-label>City</mat-label>
-                            <input [disabled]="progressBar" matInput placeholder="Hamburg">
+                            <input [disabled]="progressBar" matInput [(ngModel)]="user.city" placeholder="Your city">
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>Postal Code</mat-label>
-                            <input [disabled]="progressBar" matInput #postalCode maxlength="5" placeholder="20457">
+                            <mat-label>Zip Code</mat-label>
+                            <input [disabled]="progressBar" matInput [(ngModel)]="user.postalCode" #postalCode maxlength="5" placeholder="Your zip code">
                             <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
                         </mat-form-field>
                     </td>

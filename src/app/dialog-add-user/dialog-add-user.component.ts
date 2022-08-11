@@ -12,7 +12,7 @@ import { User } from 'src/models/user.class';
 export class DialogAddUserComponent implements OnInit {
 
   user: User = new User;
-  // birthDate: Date;
+  birthDate: Date;
   coll: any;
   progressBar: boolean = false;
 
@@ -34,22 +34,22 @@ export class DialogAddUserComponent implements OnInit {
 
   async saveUser() {
     this.progressBar = true;
-    // if(this.birthDate){
-    //   this.user.birthDate = this.birthDate.getTime();
-    // } else {
-    //   let today = new Date;
-    //   this.user.birthDate = today.getTime();
-    // }
+
     if (!this.user.firstName) {
       this.user.firstName = 'empty';
     }
     if (!this.user.lastName) {
       this.user.lastName = 'empty';
     }
-    if (!this.user.birthDate) {
+    if (!this.birthDate) {
       this.user.birthDate = 'empty';
-    } else {
-      this.user.birthDate = this.user.birthDate.getTime();
+      console.log(this.user.birthDate);
+    }
+    else {
+      this.user.birthDate = this.birthDate.getTime();
+      // this.user.birthDate = this.user.birthDate.getTime();
+      // this.user.birthDate = this.user.birthDate.toLocaleDateString();
+      console.log(this.user.birthDate);
     }
     if (!this.user.email) {
       this.user.email = 'empty';

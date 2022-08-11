@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { doc, Firestore, getDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { collection } from '@firebase/firestore';
 import { User } from 'src/models/user.class';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
@@ -13,6 +12,7 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
 })
 export class UserDetailComponent implements OnInit {
 
+  birthDate:any = '';
   userId: string = '';
   selectedUser: any;
   user: User = new User();
@@ -24,11 +24,21 @@ export class UserDetailComponent implements OnInit {
 
 
   async ngOnInit() {
+
+    let bd = this.user.birthDate;
+
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
     });
     await this.getUser(this.userId)
 
+    if(this.user.birthDate != 'empty'){
+      let milliSeconds = this.user.birthDate;
+      let date = new Date(milliSeconds);
+      this.birthDate = date.toLocaleDateString();
+    } else{
+      this.birthDate = 'empty';
+    }
   }
 
 
@@ -40,11 +50,13 @@ export class UserDetailComponent implements OnInit {
   }
 
 
-  openEditDialog(){
-    this.dialog.open(DialogEditUserComponent, {
+  openEditDialog() {
+    const dialog = this.dialog.open(DialogEditUserComponent, {
       width: '450px',
     });
-
+    // dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJson());
+    dialog.componentInstance.userId = this.userId;
   }
 }
 
