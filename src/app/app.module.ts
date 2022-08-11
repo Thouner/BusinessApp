@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import { StartSiteComponent } from './start-site/start-site.component';
 
 
 
@@ -39,7 +40,8 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     UserComponent,
     DialogAddUserComponent,
     UserDetailComponent,
-    DialogEditUserComponent
+    DialogEditUserComponent,
+    StartSiteComponent
   ],
   imports: [
     BrowserModule,

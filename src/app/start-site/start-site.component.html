@@ -1,0 +1,25 @@
+<h1>Christmas Countdown</h1>
+
+<div class="overcontainer">
+    <div class="countdown-container">
+        <div> <span>Sleeps</span><span> {{ restSleeps }}</span> </div>
+        <div> <span>Hours</span><span> {{ restHours - (restSleeps - 1) * 24}}</span> </div>
+        <div> <span>Minutes</span><span> {{ restMinutes - (restHours * 60) }}</span> </div>
+        <div> <span>Seconds</span><span> {{ restSeconds - (restMinutes * 60) }}</span> </div>
+    </div>
+</div>
+
+
+
+<p>{{ xWeekDay }}</p>
+
+
+
+<h2>Christmas Jokes</h2>
+
+<div class="overcontainer">
+    <div class="joke-container">
+        <p>{{ xJokes ? xJokes[randomNumber].question : '' }}</p>
+        <p>{{ xJokes ? xJokes[randomNumber].answer : '' }}</p>
+    </div>
+</div>
