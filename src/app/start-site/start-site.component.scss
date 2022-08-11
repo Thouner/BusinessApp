@@ -1,18 +1,26 @@
-h1 {
+h1,
+h2 {
     text-align: center;
+}
+
+mat-card {
+    margin-bottom: 16px;
 }
 
 .overcontainer {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 16px;
+    // background-color: white;
 }
 
-.countdown-container {
+.under-container {
     display: flex;
     justify-content: space-between;
     max-width: 1000px;
     width: 100%;
-    p {
+    span {
         font-weight: 500;
     }
     @media screen and (max-width: 450px) {
@@ -23,12 +31,17 @@ h1 {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 16px;
     }
 }
 
-h2 {
-    margin-top: 32px;
-    text-align: center;
+.marginB16 {
+    margin-bottom: 16px;
+}
+
+p {
+    margin: 16px;
+    font-weight: 500;
 }
 
 .joke-container {

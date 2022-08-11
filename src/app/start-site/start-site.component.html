@@ -1,25 +1,59 @@
-<h1>Christmas Countdown</h1>
+<mat-card>
+    <h1>Christmas Countdown</h1>
 
-<div class="overcontainer">
-    <div class="countdown-container">
-        <div> <span>Sleeps</span><span> {{ restSleeps }}</span> </div>
-        <div> <span>Hours</span><span> {{ restHours - (restSleeps - 1) * 24}}</span> </div>
-        <div> <span>Minutes</span><span> {{ restMinutes - (restHours * 60) }}</span> </div>
-        <div> <span>Seconds</span><span> {{ restSeconds - (restMinutes * 60) }}</span> </div>
+    <div class="overcontainer">
+        <div class="under-container">
+            <div>
+                <h3>Sleeps</h3><span> {{ restSleeps }}</span> </div>
+            <div>
+                <h3>Hours</h3><span> {{ restHours - (restDays) * 24}}</span> </div>
+            <div>
+                <h3>Minutes</h3><span> {{ restMinutes - (restHours * 60) }}</span> </div>
+            <div>
+                <h3>Seconds</h3><span> {{ restSeconds - (restMinutes * 60) }}</span> </div>
+        </div>
     </div>
-</div>
+</mat-card>
 
-
-
-<p>{{ xWeekDay }}</p>
-
-
-
-<h2>Christmas Jokes</h2>
-
-<div class="overcontainer">
-    <div class="joke-container">
-        <p>{{ xJokes ? xJokes[randomNumber].question : '' }}</p>
-        <p>{{ xJokes ? xJokes[randomNumber].answer : '' }}</p>
+<mat-card>
+    <h2>Christmas Day is on a</h2>
+    <div class="overcontainer">
+        <p>{{ xWeekDay }}</p>
     </div>
-</div>
+</mat-card>
+
+<mat-card>
+    <h2>Christmas time left</h2>
+    <div class="overcontainer ">
+        <div class="under-container ">
+            <div>
+                <h3>{{ restSeconds }}</h3><span class="marginB16">Secounds</span>
+                <h3>{{ restMinutes }}</h3><span>Minutes</span>
+            </div>
+            <div>
+                <h3>{{ restHours }}</h3><span class="marginB16">Hours</span>
+                <h3>{{ restDays }}</h3><span>Days</span>
+            </div>
+            <div>
+                <h3>{{ restDays / 7 }}</h3><span class="marginB16">Weeks</span>
+                <h3>{{ restMonths }}</h3><span>Months</span>
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+<mat-card>
+    <h2>Christmas time left</h2>
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+</mat-card>
+
+<mat-card>
+    <h2>Christmas Jokes</h2>
+
+    <div class="overcontainer">
+        <div class="joke-container">
+            <p>{{ xJokes ? xJokes[randomNumber].question : '' }}</p>
+            <p>{{ xJokes ? xJokes[randomNumber].answer : '' }}</p>
+        </div>
+    </div>
+</mat-card>

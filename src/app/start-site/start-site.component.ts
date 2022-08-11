@@ -11,12 +11,17 @@ export class StartSiteComponent implements OnInit {
   restSeconds: number = 0;
   restMinutes: number = 0;
   restHours: number = 0;
+  restDays: number = 0;
+  restWeeks: number = 0;
+  restMonths: number = 0;
   restSleeps: number = 0;
   xJokes: any = '';
   randomNumber: number;
   today: Date = new Date();
   secoundsToToday: number = this.today.getTime();
   xInSecounds: number;
+  yearInSecounds: number = 1000 * 60 * 60 * 24 * 365;
+percentPassX;
   xWeekDay:string = '';
 
 
@@ -27,9 +32,18 @@ export class StartSiteComponent implements OnInit {
     await this.getXJokes();
     this.getRandomNumber();
     this.getXWeekday();
+this.distanceToX();
 
 
-  }
+}
+
+
+distanceToX(){
+  let yearBeforX = this.xInSecounds - this.yearInSecounds;
+  let timePassToX = this.secoundsToToday - yearBeforX;
+  this.percentPassX = (100 / this.yearInSecounds) * timePassToX;
+  console.log(this.percentPassX);
+ }
 
 
   getXWeekday() {
@@ -47,6 +61,9 @@ export class StartSiteComponent implements OnInit {
     this.restSeconds = this.timeLeft.seconds;
     this.restMinutes = this.timeLeft.minutes;
     this.restHours = this.timeLeft.hours;
+    this.restDays = this.timeLeft.days;;
+    this.restWeeks = this.timeLeft.weeks;;
+    this.restMonths = this.timeLeft.months;;
     this.restSleeps = this.timeLeft.sleeps;
     setTimeout(() => {
       this.getXTime();
