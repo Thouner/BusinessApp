@@ -27,15 +27,15 @@
     <div class="overcontainer ">
         <div class="under-container ">
             <div>
-                <h3>{{ restSeconds }}</h3><span class="marginB16">Secounds</span>
-                <h3>{{ restMinutes }}</h3><span>Minutes</span>
+                <h3>{{ internationalNumberFormat.format(restSeconds) }}</h3><span class="marginB32">Secounds</span>
+                <h3>{{ internationalNumberFormat.format(restMinutes) }}</h3><span>Minutes</span>
             </div>
             <div>
-                <h3>{{ restHours }}</h3><span class="marginB16">Hours</span>
+                <h3>{{ internationalNumberFormat.format(restHours) }}</h3><span class="marginB32">Hours</span>
                 <h3>{{ restDays }}</h3><span>Days</span>
             </div>
             <div>
-                <h3>{{ restDays / 7 }}</h3><span class="marginB16">Weeks</span>
+                <h3>{{ shortRestWeeks }}</h3><span class="marginB32">Weeks</span>
                 <h3>{{ restMonths }}</h3><span>Months</span>
             </div>
         </div>
@@ -43,8 +43,9 @@
 </mat-card>
 
 <mat-card>
-    <h2>Christmas time left</h2>
-    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+    <h2>Time passed until Christmas</h2>
+    <mat-progress-bar mode="determinate" value="{{ percentPassX }}"></mat-progress-bar>
+    <p class="acenter">{{ percentPassX }}%</p>
 </mat-card>
 
 <mat-card>
@@ -52,8 +53,9 @@
 
     <div class="overcontainer">
         <div class="joke-container">
-            <p>{{ xJokes ? xJokes[randomNumber].question : '' }}</p>
-            <p>{{ xJokes ? xJokes[randomNumber].answer : '' }}</p>
+            <p>{{ jokePlusNumber ? jokePlusNumber.question : '' }}</p>
+            <p>{{ jokePlusNumber ? jokePlusNumber.answer : '' }}</p>
+            <button (click)="nextJoke()" mat-stroked-button>Next</button>
         </div>
     </div>
 </mat-card>

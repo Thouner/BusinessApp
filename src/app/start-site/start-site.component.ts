@@ -15,14 +15,17 @@ export class StartSiteComponent implements OnInit {
   restWeeks: number = 0;
   restMonths: number = 0;
   restSleeps: number = 0;
-  xJokes: any = '';
-  randomNumber: number;
+  randomNumber: number = 0;
+  shortRestWeeks: number = 0;
   today: Date = new Date();
   secoundsToToday: number = this.today.getTime();
   xInSecounds: number;
   yearInSecounds: number = 1000 * 60 * 60 * 24 * 365;
-percentPassX;
-  xWeekDay:string = '';
+  percentPassX: number = 0;
+  xWeekDay: string = '';
+  xJokes: any = '';
+  jokePlusNumber: any = '';
+  internationalNumberFormat = new Intl.NumberFormat('en-US');
 
 
   constructor() { }
@@ -32,18 +35,33 @@ percentPassX;
     await this.getXJokes();
     this.getRandomNumber();
     this.getXWeekday();
-this.distanceToX();
+    this.distanceToX();
+    this.shortWeeks();
+  }
+
+  shortWeeks() {
+    let number = this.restDays / 7;
+    let m = Number((Math.abs(number) * 100).toPrecision(15));
+    this.shortRestWeeks = Math.round(m) / 100 * Math.sign(number);
+  }
 
 
-}
+  nextJoke() {
+    this.randomNumber = this.randomNumber + 1;
+    if (this.randomNumber > 110) {
+      this.randomNumber = 0;
+    }
+    this.jokePlusNumber = this.xJokes[this.randomNumber];
+  }
 
 
-distanceToX(){
-  let yearBeforX = this.xInSecounds - this.yearInSecounds;
-  let timePassToX = this.secoundsToToday - yearBeforX;
-  this.percentPassX = (100 / this.yearInSecounds) * timePassToX;
-  console.log(this.percentPassX);
- }
+  distanceToX() {
+    let yearBeforX = this.xInSecounds - this.yearInSecounds;
+    let timePassToX = this.secoundsToToday - yearBeforX;
+    this.percentPassX = (100 / this.yearInSecounds) * timePassToX;
+    let m = Number((Math.abs(this.percentPassX) * 100).toPrecision(15));
+    this.percentPassX = Math.round(m) / 100 * Math.sign(this.percentPassX);
+  }
 
 
   getXWeekday() {
@@ -79,6 +97,7 @@ distanceToX(){
 
   getRandomNumber() {
     this.randomNumber = Math.floor(Math.random() * 111);
+    this.jokePlusNumber = this.xJokes[this.randomNumber];
   }
 
 
