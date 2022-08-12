@@ -30,7 +30,13 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { StartSiteComponent } from './start-site/start-site.component';
-
+import { MatSortModule } from '@angular/material/sort';
+import { MoviesComponent } from './movies/movies.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+import { DialogMovieDetailsComponent } from './dialog-movie-details/dialog-movie-details.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatRippleModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -41,7 +47,9 @@ import { StartSiteComponent } from './start-site/start-site.component';
     DialogAddUserComponent,
     UserDetailComponent,
     DialogEditUserComponent,
-    StartSiteComponent
+    StartSiteComponent,
+    MoviesComponent,
+    DialogMovieDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +70,11 @@ import { StartSiteComponent } from './start-site/start-site.component';
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule,
+    MatSortModule,
+    MatGridListModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatRippleModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

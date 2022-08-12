@@ -1,0 +1,16 @@
+<mat-card>
+
+    <h1>Christmas Movies</h1>
+
+    <div class="acenter">
+        <mat-card matRipple (click)="openMovieDialog()" class="movie-container cursorPointer" *ngFor="let movie of api.xMovies">
+            <h3>{{movie.Title}}</h3>
+
+        </mat-card>
+    </div>
+
+    <button style="opacity: 0;" mat-stroked-button>back</button>
+    <button class="back-button" *ngIf="moviePage > 1" (click)="preMovies()" mat-stroked-button>back</button>
+    <button class="next-button" *ngIf="moviePage < 514" (click)="nextMovies()" mat-stroked-button>Next</button>
+
+</mat-card>

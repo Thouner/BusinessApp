@@ -12,7 +12,7 @@ import { MatDrawerMode } from '@angular/material/sidenav';
 export class AppComponent implements OnInit {
 
   sideMode: MatDrawerMode = 'side';
-  public screenWidth: any;
+  screenWidth: any;
 
 
   constructor() {

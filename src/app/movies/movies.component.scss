@@ -1,0 +1,30 @@
+    h1,
+    h2 {
+        text-align: center;
+        background-color: #FAFAFA;
+    }
+
+    mat-card {
+        position: relative;
+        margin-bottom: 16px;
+    }
+
+    .movie-container {
+        transition: 125ms;
+        &:hover {
+            background-color: #FAFAFA;
+            transition: 125ms;
+        }
+    }
+
+    .back-button {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+    }
+
+    .next-button {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+    }

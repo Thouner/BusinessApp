@@ -1,103 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadApiService } from '../load-api.service';
 
 @Component({
   selector: 'app-start-site',
   templateUrl: './start-site.component.html',
   styleUrls: ['./start-site.component.scss']
 })
+
 export class StartSiteComponent implements OnInit {
 
-  timeLeft: any;
-  restSeconds: number = 0;
-  restMinutes: number = 0;
-  restHours: number = 0;
-  restDays: number = 0;
-  restWeeks: number = 0;
-  restMonths: number = 0;
-  restSleeps: number = 0;
-  randomNumber: number = 0;
-  shortRestWeeks: number = 0;
-  today: Date = new Date();
-  secoundsToToday: number = this.today.getTime();
-  xInSecounds: number;
-  yearInSecounds: number = 1000 * 60 * 60 * 24 * 365;
-  percentPassX: number = 0;
-  xWeekDay: string = '';
-  xJokes: any = '';
-  jokePlusNumber: any = '';
-  internationalNumberFormat = new Intl.NumberFormat('en-US');
+   constructor( public api: LoadApiService ) { }
 
-
-  constructor() { }
 
   async ngOnInit() {
-    await this.getXTime();
-    await this.getXJokes();
-    this.getRandomNumber();
-    this.getXWeekday();
-    this.distanceToX();
-    this.shortWeeks();
+    await this.api.getXTime();
+    await this.api.getXJokes();
+    this.api.getRandomNumber();
+    this.api.getXWeekday();
+    this.api.distanceTimeToX();
+    this.api.shortWeeks();
+    this.api.shortMonths();
   }
 
-  shortWeeks() {
-    let number = this.restDays / 7;
-    let m = Number((Math.abs(number) * 100).toPrecision(15));
-    this.shortRestWeeks = Math.round(m) / 100 * Math.sign(number);
-  }
 
 
   nextJoke() {
-    this.randomNumber = this.randomNumber + 1;
-    if (this.randomNumber > 110) {
-      this.randomNumber = 0;
+    this.api.randomNumber++;
+    if (this.api.randomNumber > 110) {
+      this.api.randomNumber = 0;
     }
-    this.jokePlusNumber = this.xJokes[this.randomNumber];
-  }
-
-
-  distanceToX() {
-    let yearBeforX = this.xInSecounds - this.yearInSecounds;
-    let timePassToX = this.secoundsToToday - yearBeforX;
-    this.percentPassX = (100 / this.yearInSecounds) * timePassToX;
-    let m = Number((Math.abs(this.percentPassX) * 100).toPrecision(15));
-    this.percentPassX = Math.round(m) / 100 * Math.sign(this.percentPassX);
-  }
-
-
-  getXWeekday() {
-    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    this.xInSecounds = this.secoundsToToday + (this.restSeconds * 1000) - (60 * 60 * 1000) + 2000;
-    let date = new Date(this.xInSecounds);
-    this.xWeekDay = weekday[date.getDay()];
-  }
-
-
-  async getXTime() {
-    let xTimeUrl = 'https://api.christmascountdown.live/pine/timeleft?timezone=UTC';
-    let xTimeresponse = await fetch(xTimeUrl);
-    this.timeLeft = await xTimeresponse.json();
-    this.restSeconds = this.timeLeft.seconds;
-    this.restMinutes = this.timeLeft.minutes;
-    this.restHours = this.timeLeft.hours;
-    this.restDays = this.timeLeft.days;;
-    this.restWeeks = this.timeLeft.weeks;;
-    this.restMonths = this.timeLeft.months;;
-    this.restSleeps = this.timeLeft.sleeps;
-    setTimeout(() => {
-      this.getXTime();
-    }, 200);
-  }
-
-  async getXJokes() {
-    let xTimeUrl = 'https://api.christmascountdown.live/pine/jokes';
-    let xTimeresponse = await fetch(xTimeUrl);
-    this.xJokes = await xTimeresponse.json();
-  }
-
-
-  getRandomNumber() {
-    this.randomNumber = Math.floor(Math.random() * 111);
-    this.jokePlusNumber = this.xJokes[this.randomNumber];
+    this.api.jokePlusNumber = this.api.xJokes[this.api.randomNumber];
   }
 
 

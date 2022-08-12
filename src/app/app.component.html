@@ -1,7 +1,7 @@
 <mat-drawer-container class="example-container height100vh" autosize>
     <mat-drawer #drawer class="example-sidenav" [opened]="true" [mode]="sideMode">
         <div class="logo-container">
-            <img src="assets/img/favicon.png" alt="">
+            <img class="cursorPointer" routerLink="/" src="assets/img/favicon.png" alt="">
         </div>
         <div class="link-container">
             <ul>
@@ -18,12 +18,10 @@
     </mat-drawer>
     <div class="overHidden">
         <mat-toolbar class="toolbar-container" color="primary">
-            <!-- <div class="example-sidenav-content"> -->
             <button (click)="drawer.toggle()" class="example-icon cursorPointer">
                   <mat-icon>menu</mat-icon>
             </button>
-            <!-- </div> -->
-            <span>Christmas Business</span>
+            <span class="cursorPointer" routerLink="/">Christmas Business</span>
         </mat-toolbar>
 
         <div class="router-container">
