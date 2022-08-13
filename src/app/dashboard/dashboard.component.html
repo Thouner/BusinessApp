@@ -1,7 +1,7 @@
-<mat-grid-list cols="1" rowHeight="4:1.6">
-    <mat-grid-tile>
+<div class="centercontainer ">
+    <div class="max1000-container">
 
-        <mat-card class="cursorPointer" routerLink="/">
+        <mat-card matRipple class="cursorPointer" routerLink="/">
             <div class="bgGrey acenter">
                 <mat-card-title>Time until Christmas</mat-card-title>
                 <mat-card-subtitle>sleep only</mat-card-subtitle>
@@ -12,11 +12,9 @@
             </div>
         </mat-card>
 
-    </mat-grid-tile>
 
-    <mat-grid-tile>
 
-        <mat-card class="cursorPointer" routerLink="/movies">
+        <mat-card matRipple class="cursorPointer" routerLink="/movies">
             <div class="bgGrey acenter">
                 <mat-card-title>Christmas Movies</mat-card-title>
                 <mat-card-subtitle>already a small selection</mat-card-subtitle>
@@ -26,11 +24,9 @@
             </div>
         </mat-card>
 
-    </mat-grid-tile>
 
-    <mat-grid-tile>
 
-        <mat-card class="cursorPointer">
+        <mat-card matRipple class="cursorPointer">
             <div class="bgGrey acenter">
                 <mat-card-title>Christmas Movies</mat-card-title>
                 <mat-card-subtitle>already a small selection</mat-card-subtitle>
@@ -40,7 +36,5 @@
                 <mat-card-content>{{ api.xMovies ? api.xMovies[1].Title : 'loading' }}</mat-card-content>
             </div>
         </mat-card>
-
-    </mat-grid-tile>
-
-</mat-grid-list>
+    </div>
+</div>

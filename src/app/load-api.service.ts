@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class LoadApiService {
 
   xMovies: any = '';
-  hightesNummer = 514;
 
   timeLeft: any;
   restSeconds: number = 0;

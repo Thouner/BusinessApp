@@ -1,65 +1,74 @@
-<mat-card>
-    <h1>Christmas Countdown</h1>
+<div class="centercontainer ">
+    <div class="max1000-container ">
 
-    <div class="overcontainer">
-        <div class="under-container">
-            <div>
-                <h3>Sleeps</h3><span> {{ api.restSleeps }}</span>
+        <mat-card>
+            <h1>Christmas Countdown</h1>
+
+            <div class="overcontainer">
+                <div class="under-container">
+                    <div>
+                        <h3>Sleeps</h3><span> {{ api.restSleeps }}</span>
+                    </div>
+                    <div>
+                        <h3>Hours</h3><span> {{ api.restHours - (api.restDays) * 24}}</span>
+                    </div>
+                    <div>
+                        <h3>Minutes</h3><span> {{ api.restMinutes - (api.restHours * 60) }}</span>
+                    </div>
+                    <div>
+                        <h3>Seconds</h3><span> {{ api.restSeconds - (api.restMinutes * 60) }}</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h3>Hours</h3><span> {{ api.restHours - (api.restDays) * 24}}</span>
+        </mat-card>
+
+        <mat-card>
+            <h2>Christmas Day is on a</h2>
+            <div class="overcontainer">
+                <p>{{ api.xWeekDay ? api.xWeekDay : 'loading' }}</p>
             </div>
-            <div>
-                <h3>Minutes</h3><span> {{ api.restMinutes - (api.restHours * 60) }}</span>
+        </mat-card>
+
+        <mat-card>
+            <h2>Christmas time left</h2>
+            <div class="overcontainer ">
+                <div class="under-container ">
+                    <div>
+                        <h3>{{ api.internationalNumberFormat.format(api.restSeconds) }}</h3><span class="marginB32">Secounds</span>
+                        <h3>{{ api.internationalNumberFormat.format(api.restMinutes) }}</h3><span>Minutes</span>
+                    </div>
+                    <div>
+                        <h3>{{ api.internationalNumberFormat.format(api.restHours) }}</h3><span class="marginB32">Hours</span>
+                        <h3>{{ api.restDays }}</h3><span>Days</span>
+                    </div>
+                    <div>
+                        <h3>{{ api.shortRestWeeks }}</h3><span class="marginB32">Weeks</span>
+                        <h3>{{ api.shortRestMonths }}</h3><span>Months</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h3>Seconds</h3><span> {{ api.restSeconds - (api.restMinutes * 60) }}</span>
+        </mat-card>
+
+        <mat-card>
+            <h2 class="marginB32">Time passed until Christmas</h2>
+            <div class="overcontainer">
+                <mat-progress-bar mode="determinate" value="{{ api.percentPassX }}"></mat-progress-bar>
             </div>
-        </div>
+            <div class="overcontainer">
+                <p class="acenter">{{ api.percentPassX }}%</p>
+            </div>
+        </mat-card>
+
+        <mat-card>
+            <h2>Christmas Jokes</h2>
+
+            <div class="overcontainer">
+                <div class="joke-container">
+                    <p>{{ api.jokePlusNumber ? api.jokePlusNumber.question : 'loading' }}</p>
+                    <p class="marginB32">{{ api.jokePlusNumber ? api.jokePlusNumber.answer : 'loading' }}</p>
+                    <button (click)="nextJoke()" mat-stroked-button>Next</button>
+                </div>
+            </div>
+        </mat-card>
     </div>
-</mat-card>
-
-<mat-card>
-    <h2>Christmas Day is on a</h2>
-    <div class="overcontainer">
-        <p>{{ api.xWeekDay ? api.xWeekDay : 'loading' }}</p>
-    </div>
-</mat-card>
-
-<mat-card>
-    <h2>Christmas time left</h2>
-    <div class="overcontainer ">
-        <div class="under-container ">
-            <div>
-                <h3>{{ api.internationalNumberFormat.format(api.restSeconds) }}</h3><span class="marginB32">Secounds</span>
-                <h3>{{ api.internationalNumberFormat.format(api.restMinutes) }}</h3><span>Minutes</span>
-            </div>
-            <div>
-                <h3>{{ api.internationalNumberFormat.format(api.restHours) }}</h3><span class="marginB32">Hours</span>
-                <h3>{{ api.restDays }}</h3><span>Days</span>
-            </div>
-            <div>
-                <h3>{{ api.shortRestWeeks }}</h3><span class="marginB32">Weeks</span>
-                <h3>{{ api.shortRestMonths }}</h3><span>Months</span>
-            </div>
-        </div>
-    </div>
-</mat-card>
-
-<mat-card>
-    <h2>Time passed until Christmas</h2>
-    <mat-progress-bar mode="determinate" value="{{ api.percentPassX }}"></mat-progress-bar>
-    <p class="acenter">{{ api.percentPassX }}%</p>
-</mat-card>
-
-<mat-card>
-    <h2>Christmas Jokes</h2>
-
-    <div class="overcontainer">
-        <div class="joke-container">
-            <p>{{ api.jokePlusNumber ? api.jokePlusNumber.question : 'loading' }}</p>
-            <p>{{ api.jokePlusNumber ? api.jokePlusNumber.answer : 'loading' }}</p>
-            <button (click)="nextJoke()" mat-stroked-button>Next</button>
-        </div>
-    </div>
-</mat-card>
+</div>

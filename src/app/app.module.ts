@@ -36,7 +36,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { DialogMovieDetailsComponent } from './dialog-movie-details/dialog-movie-details.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import {MatRippleModule} from '@angular/material/core';
+import { MatRippleModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -75,6 +78,9 @@ import {MatRippleModule} from '@angular/material/core';
     MatListModule,
     MatButtonToggleModule,
     MatRippleModule,
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    MatSelectModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

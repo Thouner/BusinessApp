@@ -7,6 +7,7 @@ export class User {
   street: string;
   city: string;
   postalCode: any;
+  image:any;
 
 
   constructor(obj?: any) {
@@ -17,6 +18,7 @@ export class User {
     this.street = obj ? obj.street : '';
     this.city = obj ? obj.city : '';
     this.postalCode = obj ? obj.postalCode : '';
+    this.image = obj ? obj.image : '';
   }
 
   public toJson() {
@@ -28,6 +30,7 @@ export class User {
       street: this.street,
       city: this.city,
       postalCode: this.postalCode,
+      image: this.image,
     }
   }
 

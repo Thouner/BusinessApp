@@ -8,18 +8,31 @@ mat-card {
     margin-bottom: 16px;
 }
 
+.centercontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.max1000-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 1000px;
+    width: 100%;
+}
+
 .overcontainer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 16px;
-    // background-color: white;
 }
 
 .under-container {
     display: flex;
     justify-content: space-between;
-    max-width: 1000px;
+    // max-width: 1000px;
     width: 100%;
     span {
         font-weight: 500;

@@ -12,7 +12,7 @@ export class MoviesComponent implements OnInit {
 
   moviePage: number = 1;
 
-  constructor( public dialog: MatDialog, public api: LoadApiService) { }
+  constructor(public dialog: MatDialog, public api: LoadApiService) { }
 
   async ngOnInit() {
     await this.load10Movies(this.moviePage);
@@ -20,26 +20,28 @@ export class MoviesComponent implements OnInit {
 
   }
 
-  async load10Movies(moviePage: number){
+  async load10Movies(moviePage: number) {
     await this.api.getXMovies(moviePage);
   }
 
-  preMovies(){
-this.moviePage--;
-this.load10Movies(this.moviePage)
-
+  preMovies() {
+    this.moviePage--;
+    this.load10Movies(this.moviePage)
   }
 
-  nextMovies(){
-this.moviePage++;
-this.load10Movies(this.moviePage)
+
+  nextMovies() {
+    this.moviePage++;
+    this.load10Movies(this.moviePage)
   }
 
-openMovieDialog(){
-  this.dialog.open(DialogMovieDetailsComponent, {
-    width: '450px',
 
-  });
-}
+  openMovieDialog(id) {
+    // console.log(id);
+    const dialog = this.dialog.open(DialogMovieDetailsComponent, {
+      width: '450px',
+    });
+      dialog.componentInstance.movieId = id;
+  }
 
 }

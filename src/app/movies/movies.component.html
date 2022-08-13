@@ -1,16 +1,30 @@
-<mat-card>
+<div class="centercontainer ">
+    <div class="max1000-container">
 
-    <h1>Christmas Movies</h1>
+        <mat-card>
 
-    <div class="acenter">
-        <mat-card matRipple (click)="openMovieDialog()" class="movie-container cursorPointer" *ngFor="let movie of api.xMovies">
-            <h3>{{movie.Title}}</h3>
+            <h1>Christmas Movies</h1>
+
+            <button style="opacity: 0; margin-bottom: 16px;" mat-stroked-button>back</button>
+            <button class="top-back-button" *ngIf="moviePage > 1" (click)="preMovies()" mat-stroked-button>back</button>
+            <button class="top-next-button" *ngIf="moviePage < 514" (click)="nextMovies()" mat-stroked-button>Next</button>
+
+            <div *ngIf="!api.xMovies" class="centercontainer ">
+                <mat-spinner></mat-spinner>
+            </div>
+
+            <div *ngIf="api.xMovies" class="acenter">
+                <mat-card matRipple (click)="openMovieDialog(movie.imdbID)" class="movie-container cursorPointer" *ngFor="let movie of api.xMovies">
+                    <img src="{{ movie.Poster ? movie.Poster : 'loading' }}" alt="image loading">
+                    <h3>{{ movie.Title ? movie.Title : 'loading' }}</h3>
+                </mat-card>
+            </div>
+
+            <button style="opacity: 0;" mat-stroked-button>back</button>
+            <button class="back-button" *ngIf="moviePage > 1" (click)="preMovies()" mat-stroked-button>back</button>
+            <button class="next-button" *ngIf="moviePage < 514" (click)="nextMovies()" mat-stroked-button>Next</button>
 
         </mat-card>
+
     </div>
-
-    <button style="opacity: 0;" mat-stroked-button>back</button>
-    <button class="back-button" *ngIf="moviePage > 1" (click)="preMovies()" mat-stroked-button>back</button>
-    <button class="next-button" *ngIf="moviePage < 514" (click)="nextMovies()" mat-stroked-button>Next</button>
-
-</mat-card>
+</div>

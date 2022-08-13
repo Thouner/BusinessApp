@@ -1,6 +1,5 @@
 <div class="dialog-container">
 
-    <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
 
     <h1 mat-dialog-title>Add new user</h1>
 
@@ -55,56 +54,34 @@
                     </td>
                 </tr>
             </table>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Favorite image</mat-label>
+                <mat-select [(ngModel)]="user.image">
+                    <mat-option *ngFor="let image of selectableImagesX; let i = index" class="bg{{i + 1}}" [value]="image.name">
+
+                        <div class="selection-container">
+                            <i>
+                            <div class="circleimg">
+                              <img src="assets/img/{{ image.img }}.png" alt="">
+                            </div>
+                          </i>
+                            <span>{{ image.name }}</span>
+                        </div>
+
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
         </div>
 
     </div>
+
+    <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+
     <div mat-dialog-actions>
         <button [disabled]="progressBar" mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
         <button [disabled]="progressBar" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
     </div>
 
 </div>
-
-
-
-<!-- <button mat-raised-button (click)="isEditable = !isEditable">
-  {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-</button>
-
-<mat-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-stepper> -->

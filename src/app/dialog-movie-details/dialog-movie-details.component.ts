@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogMovieDetailsComponent implements OnInit {
 
+  movieId: string = '';
+  movieDetails: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.getXMovieDetail();
+  }
+
+
+  async getXMovieDetail() {
+    let xUrl = `https://www.omdbapi.com/?i=${this.movieId}&plot=full&apikey=f7b75b3a`;
+    let xResponse = await fetch(xUrl);
+    this.movieDetails = await xResponse.json();
   }
 
 }

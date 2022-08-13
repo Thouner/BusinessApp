@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   sideMode: MatDrawerMode = 'side';
   screenWidth: any;
 
-
   constructor() {
 
   }

@@ -15,6 +15,33 @@ export class DialogAddUserComponent implements OnInit {
   birthDate: Date;
   coll: any;
   progressBar: boolean = false;
+  selectableImages: string[] = ['1', '2', '3', '4', '5', '6'];
+  selectableImagesX: any = [
+    {
+      'name': 'Gingerbread',
+      'img': '1'
+    },
+    {
+      'name': 'Grinch',
+      'img': '2'
+    },
+    {
+      'name': 'Reindeer',
+      'img': '3'
+    },
+    {
+      'name': 'penguin',
+      'img': '4'
+    },
+    {
+      'name': 'santa',
+      'img': '5'
+    },
+    {
+      'name': 'snowman',
+      'img': '6'
+    },
+  ];
 
   constructor(
     public dialogRef: MatDialogRef<DialogAddUserComponent>,
@@ -43,13 +70,13 @@ export class DialogAddUserComponent implements OnInit {
     }
     if (!this.birthDate) {
       this.user.birthDate = 'empty';
-      console.log(this.user.birthDate);
+      // console.log(this.user.birthDate);
     }
     else {
       this.user.birthDate = this.birthDate.getTime();
       // this.user.birthDate = this.user.birthDate.getTime();
       // this.user.birthDate = this.user.birthDate.toLocaleDateString();
-      console.log(this.user.birthDate);
+      // console.log(this.user.birthDate);
     }
     if (!this.user.email) {
       this.user.email = 'empty';
@@ -63,9 +90,14 @@ export class DialogAddUserComponent implements OnInit {
     if (!this.user.postalCode) {
       this.user.postalCode = 'empty';
     }
+    if (!this.user.image) {
+      this.user.image = '5';
+    }
     await addDoc(this.coll, { user: this.user.toJson() })
     // await setDoc(doc(this.coll), {user: this.user});
     this.progressBar = false;
+    console.log(this.user);
+
     this.dialogRef.close();
   }
 

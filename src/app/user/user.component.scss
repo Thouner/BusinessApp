@@ -23,48 +23,61 @@
 }
 
 mat-card {
-    padding: 0;
+    margin-bottom: 16px;
 }
 
-.table-container {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    tr {
+// .table-container {
+//     width: 100%;
+//     border-collapse: collapse;
+//     table-layout: fixed;
+//     tr {
+//         width: 33%;
+//         background-color: #FAFAFA;
+//         border-bottom: 1px solid rgba($color: #000000, $alpha: 0.15);
+//         cursor: pointer;
+//         &:first-child {
+//             cursor: unset;
+//         }
+//         &:not(:first-child):hover {
+//             filter: brightness(0.85);
+//         }
+//         &:last-child {
+//             border-bottom: none;
+//         }
+//         &:nth-child(even) {
+//             background-color: white;
+//         }
+//         th,
+//         td {
+//             padding: 5px 20px;
+//             @media screen and (max-width: 900px) {
+//                 padding: 5px 5px;
+//             }
+//         }
+//         th {
+//             text-align: left;
+//         }
+//         td {
+//             overflow: hidden;
+//             text-overflow: ellipsis;
+//             white-space: nowrap;
+//         }
+//     }
+// }
+.headline-table {
+    display: flex;
+    gap: 16px;
+    p,
+    h3 {
         width: 33%;
-        background-color: #FAFAFA;
-        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.15);
-        cursor: pointer;
-        &:first-child {
-            cursor: unset;
-        }
-        &:not(:first-child):hover {
-            filter: brightness(0.85);
-        }
-        &:last-child {
-            border-bottom: none;
-        }
-        &:nth-child(even) {
-            background-color: white;
-        }
-        th,
-        td {
-            padding: 5px 20px;
-            @media screen and (max-width: 900px) {
-                padding: 5px 5px;
-            }
-        }
-        th {
-            text-align: left;
-        }
-        td {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
+        height: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        box-sizing: border-box;
+        margin-bottom: 0;
+    }
+    h3 {
+        font-weight: 500;
     }
 }
-
-// button {
-//     margin: 16px 8px;
-// }
