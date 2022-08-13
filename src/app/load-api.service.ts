@@ -31,6 +31,9 @@ export class LoadApiService {
 
 
 
+
+
+
   async getXMovies(rNum) {
     let xUrl = `https://www.omdbapi.com/?s=christmas&apikey=f7b75b3a&page=${rNum}`;
     let xResponse = await fetch(xUrl);

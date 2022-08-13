@@ -15,7 +15,7 @@ export class DialogAddUserComponent implements OnInit {
   birthDate: Date;
   coll: any;
   progressBar: boolean = false;
-  selectableImages: string[] = ['1', '2', '3', '4', '5', '6'];
+  selectableImages: string[] = ['Gingerbread', 'Grinch', 'Reindeer', 'penguin', 'santa', 'snowman'];
   selectableImagesX: any = [
     {
       'name': 'Gingerbread',

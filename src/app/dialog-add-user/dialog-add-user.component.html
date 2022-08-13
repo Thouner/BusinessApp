@@ -58,15 +58,15 @@
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Favorite image</mat-label>
                 <mat-select [(ngModel)]="user.image">
-                    <mat-option *ngFor="let image of selectableImagesX; let i = index" class="bg{{i + 1}}" [value]="image.name">
+                    <mat-option *ngFor="let image of selectableImages; let i = index" class="bg{{image}}" [value]="image">
 
                         <div class="selection-container">
                             <i>
                             <div class="circleimg">
-                              <img src="assets/img/{{ image.img }}.png" alt="">
+                              <img src="assets/img/{{ image }}.png" alt="">
                             </div>
                           </i>
-                            <span>{{ image.name }}</span>
+                            <span>{{ image }}</span>
                         </div>
 
                     </mat-option>

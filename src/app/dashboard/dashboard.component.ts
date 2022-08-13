@@ -10,7 +10,9 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(public api: LoadApiService) { }
+  constructor(public api: LoadApiService) {
+
+  }
 
   async ngOnInit() {
     await this.api.getXMovies(this.randomIntFromInterval(1, 514));

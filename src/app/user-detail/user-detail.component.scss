@@ -7,11 +7,12 @@
     padding: 0;
     .redcolor-container {
         position: relative;
-        background-color: rgba(201, 31, 31, 0.9);
+        // background-color: rgba(201, 31, 31, 0.9);
         height: 65%;
         width: 100%;
         padding: 20px;
         box-sizing: border-box;
+        text-shadow: 2px 2px 2px #000000;
         // display: flex;
         // justify-content: center;
         // align-items: center;
@@ -46,4 +47,10 @@ mat-card-content {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.backbutton {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
 }

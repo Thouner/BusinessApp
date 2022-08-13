@@ -1,38 +1,51 @@
-<mat-card class="profil-header">
-    <div class="redcolor-container">
+<div *ngIf="!user.image" class="centercontainer magin-t-16">
+    <mat-spinner></mat-spinner>
+</div>
 
-        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
-        <span>{{ user.email }}</span>
+<div *ngIf="user.image" class="p-relativ">
 
-        <div class="santa-img-container">
-            <img src="assets/img/3.png" alt="">
-        </div>
+    <mat-card class="profil-header">
 
-        <button mat-icon-button [matMenuTriggerFor]="editMenu" class="menu-button">
+        <div class="redcolor-container" class="bg{{ user.image }}">
+
+            <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+            <span>{{ user.email }}</span>
+
+            <div class="santa-img-container">
+                <img src="assets/img/{{ user.image }}.png" alt="">
+            </div>
+
+            <button mat-icon-button [matMenuTriggerFor]="editMenu" class="menu-button">
           <mat-icon>more_horiz</mat-icon>
         </button>
-        <mat-menu #editMenu="matMenu" xPosition="before">
-            <button (click)="openEditDialog()" mat-menu-item>Edit user</button>
-            <button color="warn" mat-button>Delete user</button>
-        </mat-menu>
+            <mat-menu #editMenu="matMenu" xPosition="before">
+                <button (click)="openEditDialog()" mat-menu-item>Edit user</button>
+                <button color="warn" mat-button>Delete user</button>
+            </mat-menu>
 
-    </div>
+        </div>
 
-</mat-card>
+    </mat-card>
 
-<mat-card class="magin-t-16 p-relativ">
-    <mat-card-title>Address</mat-card-title>
-    <mat-card-content>
-        {{ user.street }} <br> {{ user.city }} {{ user.postalCode }}
-    </mat-card-content>
+    <mat-card class="magin-t-16 p-relativ">
 
-</mat-card>
+        <mat-card-title>Address</mat-card-title>
+        <mat-card-content>
+            {{ user.street }} <br> {{ user.city }} {{ user.postalCode }}
+        </mat-card-content>
 
-<mat-card class="magin-t-16 p-relativ">
-    <mat-card-title>Birth date</mat-card-title>
-    <mat-card-content>
-        {{ birthDate }}
-    </mat-card-content>
+    </mat-card>
 
+    <mat-card class="magin-t-16 p-relativ">
 
-</mat-card>
+        <mat-card-title>Birth date</mat-card-title>
+        <mat-card-content>
+            {{ birthDate }}
+        </mat-card-content>
+    </mat-card>
+
+</div>
+
+<button routerLink="/user" class="backbutton" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
