@@ -2,27 +2,41 @@
     <div class="max1000-container">
 
         <mat-card>
+            <!-- search container -->
+            <mat-form-field class="max1000-container " appearance="outline">
+                <mat-label>search movies</mat-label>
 
-            <h1>Christmas Movies</h1>
+                <div class="search-container">
+                    <input matInput [(ngModel)]="serachMovie" placeholder="Movie name" type="search" (keydown.enter)="onKeyDownEvent($event)" />
+                    <button (click)="searchMovies()" mat-stroked-button>search</button>
+                </div>
+            </mat-form-field>
 
+        </mat-card>
+
+        <mat-card>
+            <!-- show the movies -->
+            <h1 style="text-transform: capitalize;">{{ serachValue }} Movies</h1>
+            <!-- displaying the previous or next movies -->
             <button style="opacity: 0; margin-bottom: 16px;" mat-stroked-button>back</button>
             <button class="top-back-button" *ngIf="moviePage > 1" (click)="preMovies()" mat-stroked-button>back</button>
-            <button class="top-next-button" *ngIf="moviePage < 514" (click)="nextMovies()" mat-stroked-button>Next</button>
+            <button class="top-next-button" *ngIf="moviePage < maxPage && maxPage != 1" (click)="nextMovies()" mat-stroked-button>Next</button>
 
             <div *ngIf="!api.xMovies" class="centercontainer ">
                 <mat-spinner></mat-spinner>
             </div>
-
+            <!-- show 10 movies -->
             <div *ngIf="api.xMovies" class="acenter">
-                <mat-card matRipple (click)="openMovieDialog(movie.imdbID)" class="movie-container cursorPointer" *ngFor="let movie of api.xMovies">
-                    <img src="{{ movie.Poster ? movie.Poster : 'loading' }}" alt="image loading">
+                <mat-card matRipple (click)="openMovieDialog(movie.imdbID)" class="movie-container marginB16 cursorPointer" *ngFor="let movie of api.xMovies">
+                    <img *ngIf="movie.Poster == 'N/A'" style="height: 50px;" src="assets/img/noImages.jpg" alt="image loading">
+                    <img *ngIf="movie.Poster != 'N/A'" src="{{ movie.Poster ? movie.Poster : 'assets/img/noImages.jpg' }}" alt="image loading">
                     <h3>{{ movie.Title ? movie.Title : 'loading' }}</h3>
                 </mat-card>
             </div>
-
+            <!-- displaying the previous or next movies -->
             <button style="opacity: 0;" mat-stroked-button>back</button>
             <button class="back-button" *ngIf="moviePage > 1" (click)="preMovies()" mat-stroked-button>back</button>
-            <button class="next-button" *ngIf="moviePage < 514" (click)="nextMovies()" mat-stroked-button>Next</button>
+            <button class="next-button" *ngIf="moviePage < maxPage && maxPage != 1" (click)="nextMovies()" mat-stroked-button>Next</button>
 
         </mat-card>
 

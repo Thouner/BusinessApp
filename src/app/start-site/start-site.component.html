@@ -1,7 +1,8 @@
 <div class="centercontainer ">
     <div class="max1000-container ">
-
+        <!-- the remaining time -->
         <mat-card>
+
             <h1>Christmas Countdown</h1>
 
             <div class="overcontainer">
@@ -21,16 +22,20 @@
                 </div>
             </div>
         </mat-card>
-
+        <!-- the christmas day -->
         <mat-card>
+
             <h2>Christmas Day is on a</h2>
             <div class="overcontainer">
                 <p>{{ api.xWeekDay ? api.xWeekDay : 'loading' }}</p>
             </div>
-        </mat-card>
 
+        </mat-card>
+        <!-- respective remaining times -->
         <mat-card>
+
             <h2>Christmas time left</h2>
+
             <div class="overcontainer ">
                 <div class="under-container ">
                     <div>
@@ -47,9 +52,11 @@
                     </div>
                 </div>
             </div>
-        </mat-card>
 
+        </mat-card>
+        <!-- Remaining time process -->
         <mat-card>
+
             <h2 class="marginB32">Time passed until Christmas</h2>
             <div class="overcontainer">
                 <mat-progress-bar mode="determinate" value="{{ api.percentPassX }}"></mat-progress-bar>
@@ -57,9 +64,11 @@
             <div class="overcontainer">
                 <p class="acenter">{{ api.percentPassX }}%</p>
             </div>
-        </mat-card>
 
+        </mat-card>
+        <!-- christmas jokes -->
         <mat-card>
+
             <h2>Christmas Jokes</h2>
 
             <div class="overcontainer">
@@ -69,6 +78,8 @@
                     <button (click)="nextJoke()" mat-stroked-button>Next</button>
                 </div>
             </div>
+
         </mat-card>
+
     </div>
 </div>

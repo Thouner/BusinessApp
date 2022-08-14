@@ -13,23 +13,29 @@ export class AppComponent implements OnInit {
 
   sideMode: MatDrawerMode = 'side';
   screenWidth: any;
+  openNav:boolean = true;
 
-  constructor() {
 
-  }
+  constructor() { }
+
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;
   }
 
+
+  /**
+   * determine the window width
+   */
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize() {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth >= 799) {
       this.sideMode = 'side';
+      this.openNav = true;
     } else if (this.screenWidth < 799) {
       this.sideMode = 'over';
+      this.openNav = false;
     }
   }
-
 }

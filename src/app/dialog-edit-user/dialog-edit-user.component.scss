@@ -34,3 +34,28 @@ mat-form-field {
         width: calc(100% + 48px);
     }
 }
+
+.selection-container {
+    display: flex;
+    justify-content: space-around;
+    i {
+        width: 50%;
+    }
+    span {
+        width: 50%;
+    }
+    .circleimg {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+    }
+}

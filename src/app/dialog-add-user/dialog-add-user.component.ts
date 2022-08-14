@@ -16,32 +16,7 @@ export class DialogAddUserComponent implements OnInit {
   coll: any;
   progressBar: boolean = false;
   selectableImages: string[] = ['Gingerbread', 'Grinch', 'Reindeer', 'penguin', 'santa', 'snowman'];
-  selectableImagesX: any = [
-    {
-      'name': 'Gingerbread',
-      'img': '1'
-    },
-    {
-      'name': 'Grinch',
-      'img': '2'
-    },
-    {
-      'name': 'Reindeer',
-      'img': '3'
-    },
-    {
-      'name': 'penguin',
-      'img': '4'
-    },
-    {
-      'name': 'santa',
-      'img': '5'
-    },
-    {
-      'name': 'snowman',
-      'img': '6'
-    },
-  ];
+
 
   constructor(
     public dialogRef: MatDialogRef<DialogAddUserComponent>,
@@ -49,20 +24,37 @@ export class DialogAddUserComponent implements OnInit {
     this.coll = collection(this.firestore, 'users');
   }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
   }
 
 
+/**
+ * closing the dialog
+ */
   onNoClick(): void {
     this.dialogRef.close();
   }
 
 
+/**
+ * save the user
+ */
   async saveUser() {
     this.progressBar = true;
+    this.saveNameAndBirth();
+    this.saveAddressEmailAndImg();
+    await addDoc(this.coll, { user: this.user.toJson() })
+    this.progressBar = false;
+    this.dialogRef.close();
+  }
 
-    if (!this.user.firstName) {
+
+/**
+ * save name and birthday
+ */
+  saveNameAndBirth(){
+      if (!this.user.firstName) {
       this.user.firstName = 'empty';
     }
     if (!this.user.lastName) {
@@ -70,15 +62,18 @@ export class DialogAddUserComponent implements OnInit {
     }
     if (!this.birthDate) {
       this.user.birthDate = 'empty';
-      // console.log(this.user.birthDate);
     }
     else {
       this.user.birthDate = this.birthDate.getTime();
-      // this.user.birthDate = this.user.birthDate.getTime();
-      // this.user.birthDate = this.user.birthDate.toLocaleDateString();
-      // console.log(this.user.birthDate);
     }
-    if (!this.user.email) {
+  }
+
+
+/**
+ * save the address, email and picture
+ */
+  saveAddressEmailAndImg(){
+        if (!this.user.email) {
       this.user.email = 'empty';
     }
     if (!this.user.street) {
@@ -91,14 +86,7 @@ export class DialogAddUserComponent implements OnInit {
       this.user.postalCode = 'empty';
     }
     if (!this.user.image) {
-      this.user.image = '5';
+      this.user.image = 'santa';
     }
-    await addDoc(this.coll, { user: this.user.toJson() })
-    // await setDoc(doc(this.coll), {user: this.user});
-    this.progressBar = false;
-    console.log(this.user);
-
-    this.dialogRef.close();
   }
-
 }

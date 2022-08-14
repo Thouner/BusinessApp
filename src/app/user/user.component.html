@@ -1,15 +1,16 @@
-<mat-card class="headline-table">
+<!-- headline -->
+<mat-card class="headline-table margintop">
     <h3>Name</h3>
     <h3>Email</h3>
     <h3>City</h3>
 </mat-card>
-
-<mat-card class="headline-table" *ngFor="let user of allUsers, let i = index" [routerLink]="['/user/' + user.id]">
+<!-- all users -->
+<mat-card class="headline-table usercontainer cursorPointer" *ngFor="let user of allUsers, let i = index" [routerLink]="['/user/' + user.id]">
     <p>{{ user.user.firstName }} &nbsp;<span *ngIf="user.user.lastName != 'empty'">{{ user.user.lastName }}</span></p>
     <p>{{ user.user.email }}</p>
     <p>{{ user.user.city }}</p>
 </mat-card>
-
+<!-- add user button -->
 <button (click)="openDialog()" class="add-button" color="primary " matTooltip="Add a new user " [matTooltipPosition]=" 'left' " matTooltipHideDelay="100 ">
-  <mat-icon>add</mat-icon>
-</button>
+    <mat-icon>add</mat-icon>
+  </button>

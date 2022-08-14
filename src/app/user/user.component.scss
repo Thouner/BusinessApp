@@ -8,8 +8,16 @@
     border: none;
     height: 48px;
     width: 48px;
-    right: 32px;
-    bottom: 32px;
+    right: 16px;
+    top: 80px;
+    z-index: 5;
+    @media screen and (max-width: 599px) {
+        top: 64px;
+    }
+    @media screen and (max-width: 400px) {
+        right: 16px;
+        bottom: 16px;
+    }
     &:hover mat-icon {
         filter: brightness(0.85);
     }
@@ -22,48 +30,17 @@
     }
 }
 
+.margintop {
+    margin-top: 64px;
+    @media screen and (max-width: 599px) {
+        margin-top: 48px;
+    }
+}
+
 mat-card {
     margin-bottom: 16px;
 }
 
-// .table-container {
-//     width: 100%;
-//     border-collapse: collapse;
-//     table-layout: fixed;
-//     tr {
-//         width: 33%;
-//         background-color: #FAFAFA;
-//         border-bottom: 1px solid rgba($color: #000000, $alpha: 0.15);
-//         cursor: pointer;
-//         &:first-child {
-//             cursor: unset;
-//         }
-//         &:not(:first-child):hover {
-//             filter: brightness(0.85);
-//         }
-//         &:last-child {
-//             border-bottom: none;
-//         }
-//         &:nth-child(even) {
-//             background-color: white;
-//         }
-//         th,
-//         td {
-//             padding: 5px 20px;
-//             @media screen and (max-width: 900px) {
-//                 padding: 5px 5px;
-//             }
-//         }
-//         th {
-//             text-align: left;
-//         }
-//         td {
-//             overflow: hidden;
-//             text-overflow: ellipsis;
-//             white-space: nowrap;
-//         }
-//     }
-// }
 .headline-table {
     display: flex;
     gap: 16px;
@@ -79,5 +56,14 @@ mat-card {
     }
     h3 {
         font-weight: 500;
+    }
+}
+
+.usercontainer {
+    @media screen and (max-width: 499px) {
+        flex-direction: column;
+        p {
+            width: auto;
+        }
     }
 }

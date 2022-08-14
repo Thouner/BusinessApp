@@ -3,12 +3,12 @@
         text-align: center;
         background-color: #FAFAFA;
     }
-    
-    mat-card {
+
+    .marginB16 {
         position: relative;
         margin-bottom: 16px;
     }
-    
+
     .movie-container {
         transition: 125ms;
         img {
@@ -19,25 +19,36 @@
             transition: 125ms;
         }
     }
-    
+
     .back-button {
         position: absolute;
         bottom: 16px;
         left: 16px;
     }
-    
+
     .next-button {
         position: absolute;
         bottom: 16px;
         right: 16px;
     }
-    
+
     .top-back-button {
         position: absolute;
         left: 16px;
     }
-    
+
     .top-next-button {
         position: absolute;
         right: 16px;
+    }
+
+    .search-container {
+        width: 100%;
+        display: flex;
+    }
+
+    mat-form-field {
+        .mat-form-field-wrapper {
+            padding-bottom: 5.34375em !important;
+        }
     }

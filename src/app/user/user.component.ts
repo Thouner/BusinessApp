@@ -12,6 +12,7 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
+
 export class UserComponent implements OnInit {
 
   user: User = new User;
@@ -24,22 +25,32 @@ export class UserComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private firestore: Firestore) {
-    this.coll = collection(this.firestore, 'users');
-    this.user$ = collectionData(this.coll, {idField: 'id'});
-    this.user$.subscribe((newUser) => {
-      this.allUsers = newUser;
-    });
+    this.loadFirestore();
   }
+
 
   ngOnInit(): void {
   }
 
 
+  /**
+   * loading the firestore
+   */
+  loadFirestore() {
+    this.coll = collection(this.firestore, 'users');
+    this.user$ = collectionData(this.coll, { idField: 'id' });
+    this.user$.subscribe((newUser) => {
+      this.allUsers = newUser;
+    });
+  }
+
+
+  /**
+   * open the add user component
+   */
   openDialog(): void {
     this.dialog.open(DialogAddUserComponent, {
       width: '450px',
     });
   }
-
-
 }

@@ -40,6 +40,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-user.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { MatSelectModule } from '@angular/material/select';
     DialogEditUserComponent,
     StartSiteComponent,
     MoviesComponent,
-    DialogMovieDetailsComponent
+    DialogMovieDetailsComponent,
+    DialogDeleteUserComponent
   ],
   imports: [
     BrowserModule,

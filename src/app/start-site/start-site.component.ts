@@ -9,12 +9,23 @@ import { LoadApiService } from '../load-api.service';
 
 export class StartSiteComponent implements OnInit {
 
-   constructor( public api: LoadApiService ) { }
+  constructor(public api: LoadApiService) { }
 
 
+  /**
+   * loading the time and jokes
+   */
   async ngOnInit() {
     await this.api.getXTime();
     await this.api.getXJokes();
+    this.assigningTimes();
+  }
+
+
+  /**
+   * assigning the times
+   */
+  assigningTimes() {
     this.api.getRandomNumber();
     this.api.getXWeekday();
     this.api.distanceTimeToX();
@@ -23,7 +34,9 @@ export class StartSiteComponent implements OnInit {
   }
 
 
-
+  /**
+   * loading the jokes
+   */
   nextJoke() {
     this.api.randomNumber++;
     if (this.api.randomNumber > 110) {
@@ -31,6 +44,4 @@ export class StartSiteComponent implements OnInit {
     }
     this.api.jokePlusNumber = this.api.xJokes[this.api.randomNumber];
   }
-
-
 }

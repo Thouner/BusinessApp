@@ -25,21 +25,19 @@ export class LoadApiService {
   xJokes: any = '';
   jokePlusNumber: any = '';
   internationalNumberFormat = new Intl.NumberFormat('en-US');
+  totalResults:number;
+  searchName:string = 'Christmas';
 
 
   constructor() { }
 
 
-
-
-
-
   async getXMovies(rNum) {
-    let xUrl = `https://www.omdbapi.com/?s=christmas&apikey=f7b75b3a&page=${rNum}`;
+    let xUrl = `https://www.omdbapi.com/?s=${this.searchName}&apikey=f7b75b3a&page=${rNum}`;
     let xResponse = await fetch(xUrl);
     this.xMovies = await xResponse.json();
+    this.totalResults = this.xMovies.totalResults;
     this.xMovies = this.xMovies.Search;
-    // console.log(this.xMovies);
   }
 
 

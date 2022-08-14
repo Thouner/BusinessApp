@@ -16,27 +16,49 @@ export class DialogEditUserComponent implements OnInit {
   progressBar: boolean = false;
   userId: string;
   coll: any;
+  newBirthDate: any;
+  currentBirthDate: any;
+  selectableImages: string[] = ['Gingerbread', 'Grinch', 'Reindeer', 'penguin', 'santa', 'snowman'];
+
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, private firestore: Firestore, private route: ActivatedRoute) {
     this.coll = collection(this.firestore, 'users');
   }
 
+
   ngOnInit(): void {
   }
 
 
+  /**
+ * closing the dialog
+ */
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+
+  /**
+   * update user data
+   */
   async saveUser() {
     this.progressBar = true;
-    this.user.birthDate = this.user.birthDate.getTime();;
+    this.CustomizeBirthday();
     await updateDoc(doc(this.coll, this.userId), { user: this.user.toJson() });
-    console.log(this.user);
     this.progressBar = false;
     this.dialogRef.close();
     location.reload();
   }
 
+
+  /**
+   * Customize the birthday values
+   */
+  CustomizeBirthday() {
+    if (!this.newBirthDate) {
+      this.user.birthDate = this.currentBirthDate;
+    } else {
+      this.user.birthDate = this.newBirthDate.getTime();
+    }
+  }
 }

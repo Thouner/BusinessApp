@@ -1,6 +1,6 @@
 <div class="centercontainer ">
     <div class="max1000-container">
-
+        <!-- Time until Christmas -->
         <mat-card matRipple class="cursorPointer" routerLink="/">
             <div class="bgGrey acenter">
                 <mat-card-title>Time until Christmas</mat-card-title>
@@ -11,9 +11,7 @@
                 <mat-card-content>times</mat-card-content>
             </div>
         </mat-card>
-
-
-
+        <!-- Christmas Movies -->
         <mat-card matRipple class="cursorPointer" routerLink="/movies">
             <div class="bgGrey acenter">
                 <mat-card-title>Christmas Movies</mat-card-title>
@@ -24,17 +22,5 @@
             </div>
         </mat-card>
 
-
-
-        <mat-card matRipple class="cursorPointer">
-            <div class="bgGrey acenter">
-                <mat-card-title>Christmas Movies</mat-card-title>
-                <mat-card-subtitle>already a small selection</mat-card-subtitle>
-            </div>
-            <div class="acenter">
-                <mat-card-content>{{ api.xMovies ? api.xMovies[0].Title : 'loading' }}</mat-card-content>
-                <mat-card-content>{{ api.xMovies ? api.xMovies[1].Title : 'loading' }}</mat-card-content>
-            </div>
-        </mat-card>
     </div>
 </div>

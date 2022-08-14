@@ -1,8 +1,7 @@
 <div *ngIf="!movieDetails" class="centercontainer ">
     <mat-spinner></mat-spinner>
 </div>
-
-
+<!-- movie details -->
 <div *ngIf="movieDetails" class="centercontainer ">
     <div class="max1000-container">
         <div class="details-container">
@@ -36,7 +35,6 @@
 
             <h3>Plot</h3>
             <p>{{ movieDetails.Plot }}</p>
-
 
         </div>
     </div>
