@@ -52,9 +52,9 @@ export class MoviesComponent implements OnInit {
   }
 
 
-/**
- * maximum pages at found movies
- */
+  /**
+   * maximum pages at found movies
+   */
   maxNumberForPages() {
     this.maxPage = this.api.totalResults;
     this.maxPage = this.maxPage / 10;
@@ -62,28 +62,31 @@ export class MoviesComponent implements OnInit {
   }
 
 
-/**
- * open previous page
- */
+  /**
+   * open previous page
+   */
   preMovies() {
     this.moviePage--;
+    this.api.xMovies = '';
     this.load10Movies(this.moviePage)
   }
 
 
-/**
- * open next page
- */
+  /**
+   * open next page
+   */
   nextMovies() {
     this.moviePage++;
+    this.api.xMovies = '';
     this.load10Movies(this.moviePage)
   }
 
 
-/**
- * search for movies
- */
+  /**
+   * search for movies
+   */
   async searchMovies() {
+    this.api.xMovies = '';
     this.api.searchName = this.serachMovie;
     this.serachValue = this.api.searchName;
     await this.load10Movies(this.moviePage);
@@ -91,11 +94,11 @@ export class MoviesComponent implements OnInit {
   }
 
 
-/**
- * open the detail componente of the movie
- *
- * @param id - imdb id of the movie
- */
+  /**
+   * open the detail componente of the movie
+   *
+   * @param id - imdb id of the movie
+   */
   openMovieDialog(id) {
     const dialog = this.dialog.open(DialogMovieDetailsComponent, {
       width: '450px',
