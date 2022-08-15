@@ -32,6 +32,11 @@ export class LoadApiService {
   constructor() { }
 
 
+/**
+ * loading movies by search term and page
+ *
+ * @param rNum - page of the films to be loaded
+ */
   async getXMovies(rNum) {
     let xUrl = `https://www.omdbapi.com/?s=${this.searchName}&apikey=f7b75b3a&page=${rNum}`;
     let xResponse = await fetch(xUrl);
@@ -41,8 +46,9 @@ export class LoadApiService {
   }
 
 
-
-
+/**
+ * shortening the number of months
+ */
   shortMonths() {
     let number = this.restDays / 30.5;
     let m = Number((Math.abs(number) * 10).toPrecision(15));
@@ -50,7 +56,9 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * shortening the number of weeks
+ */
   shortWeeks() {
     let number = this.restDays / 7;
     let m = Number((Math.abs(number) * 100).toPrecision(15));
@@ -58,7 +66,9 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * temporal distance to christmas
+ */
   distanceTimeToX() {
     let yearBeforX = this.xInSecounds - this.yearInSecounds;
     let timePassToX = this.secoundsToToday - yearBeforX;
@@ -68,7 +78,9 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * which day is christmas
+ */
   getXWeekday() {
     const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     this.xInSecounds = this.secoundsToToday + (this.restSeconds * 1000) - (60 * 60 * 1000) + 2000;
@@ -77,7 +89,9 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * loading times until christmas
+ */
   async getXTime() {
     let xUrl = 'https://api.christmascountdown.live/pine/timeleft?timezone=UTC';
     let xResponse = await fetch(xUrl);
@@ -89,7 +103,11 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * Save the loaded of times
+ *
+ * @param time - json with times loaded
+ */
   storeCurrentTime(time) {
     this.restSeconds = time.seconds;
     this.restMinutes = time.minutes;
@@ -99,7 +117,9 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * Loading the jokes
+ */
   async getXJokes() {
     let xUrl = 'https://api.christmascountdown.live/pine/jokes';
     let xResponse = await fetch(xUrl);
@@ -107,11 +127,11 @@ export class LoadApiService {
   }
 
 
-
+/**
+ * select a random joke
+ */
   getRandomNumber() {
     this.randomNumber = Math.floor(Math.random() * 111);
     this.jokePlusNumber = this.xJokes[this.randomNumber];
   }
-
-
 }
